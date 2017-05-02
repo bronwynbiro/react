@@ -22,11 +22,18 @@ const list = [
 class App extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       list:list,
     };
+    this.onDismiss = this.onDismiss.bind(this);
   }
+
+  onDismiss(id){
+  const isNotId = item => item.objectID !== id;
+  const updatedList= this.state.list.filter(isNotId);
+  this.setState({ list: updatedList});
+  }
+
   render() {
     const helloWorld = 'React test'
     return (
